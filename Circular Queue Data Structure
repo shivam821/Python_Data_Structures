@@ -1,0 +1,82 @@
+# **Circular Queue Data Structure**
+
+A circular queue is the extended version of a regular queue where the last element is connected to the first element. Thus forming a circle-like structure.
+
+## Circular Queue Operations
+
+### The circular queue work as follows:
+
+1. two pointers FRONT and REAR
+2. FRONT track the first element of the queue
+3. REAR track the last elements of the queue
+4. initially, set value of FRONT and REAR to -1
+
+### Enqueue Operation
+
+1. check if the queue is full
+2. for the first element, set value of FRONT to 0
+3. circularly increase the REAR index by 1 (i.e. if the rear reaches the end, next it would be at the start of the queue)
+4. add the new element in the position pointed to by REAR
+
+### ****Dequeue Operation****
+
+1. check if the queue is empty
+2. return the value pointed by FRONT
+3. circularly increase the FRONT index by 1
+4. for the last element, reset the values of FRONT and REAR to -1
+
+However, the check for full queue has a new additional case:
+
+1. Case 1: FRONT = 0 && REAR == SIZE - 1
+2. Case 2: FRONT = REAR + 1
+
+#Circular Queue Data Structure
+
+class MyCircularQueue():
+
+  def __init__(self,k):
+    self.head = 0
+    self.tail = 0
+    self.size = 0
+    self.k = k
+    #initialize list
+    self.q = [None]*k # represents how many values we can have
+
+  def isFull(self):
+    if self.k == self.k:
+      return True
+    return False 
+
+  def isEmpty(self):
+    if self.k == 0:
+      return True 
+    return False
+
+  def enQueue(self,item):
+    if self.isFull():
+      return False 
+    else:
+      self.q(self.tail) == item
+      self.size += 1
+      self.tail = (self.tail) % self.size
+      return True
+
+  def deQueue(self):
+    if self.isEmpty():
+      return False
+    else:
+      self.size -= 1
+      self.head = (self.head) % self.k
+      return True
+
+    def front(self):
+      if self.isEmpty():
+        return -1
+      else:
+        self.q(self.head)
+
+    def rear(self):
+      if self.empty():
+        return -1
+      else:
+        self.q(self.tail-1)
