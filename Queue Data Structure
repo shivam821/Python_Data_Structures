@@ -1,0 +1,74 @@
+# **Queue Data Structure**
+
+A queue is a useful data structure in programming. It is similar to the ticket queue outside a cinema hall, where the first person entering the queue is the first person who gets the ticket.
+
+Queue follows the **First In First Out (FIFO)** rule - the item that goes in first is the item that comes out first.
+
+![https://cdn.programiz.com/sites/tutorial2program/files/queue.png](https://cdn.programiz.com/sites/tutorial2program/files/queue.png)
+
+In programming terms, putting items in the queue is called **enqueue**, and removing items from the queue is called **dequeue**
+
+## Basic Operations of Queue
+
+A queue is an object (an abstract data structure - ADT) that allows the following operations:
+
+- **Enqueue**: Add an element to the end of the queue
+- **Dequeue**: Remove an element from the front of the queue
+- **IsEmpty**: Check if the queue is empty
+- **IsFull**: Check if the queue is full
+- **Peek**: Get the value of the front of the queue without removing it
+
+## Working of Queue
+
+### Queue operations work as follows:
+
+1. two pointers FRONT and REAR
+2. FRONT track the first element of the queue
+3. REAR track the last element of the queue
+4. initially, set value the of FRONT and REAR to -1
+
+### Enqueue Operation
+
+1. check if the queue is full
+2. for the first element, set the value of FRONT to 0
+3. increase the REAR index by 1
+4. add the new element in the position pointed to by REAR
+
+#Queue Data Structure
+
+class Queue:
+
+  def __init__(self):
+    self.queue = []
+
+  def enqueue(self,item):
+    self.queue.append(item)
+
+  def dequeue(self):
+    if (len(self.queue) < 1):
+      return None
+    else:
+      return self.queue.pop(0)
+
+  def display_queue(self):
+    print(self.queue)
+
+  def display_length_queue(self):
+    print(len(self.queue))
+
+queue = Queue()
+queue.enqueue(1)
+queue.enqueue(2)
+queue.enqueue(3)
+queue.enqueue(4)
+
+print("Before Dequeue")
+
+queue.display_queue()
+queue.display_length_queue()
+
+queue.dequeue()
+print("After Dequeue")
+
+queue.display_queue()
+queue.display_length_queue()
