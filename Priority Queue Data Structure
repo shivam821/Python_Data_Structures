@@ -1,0 +1,54 @@
+# **[Priority Queue Data Structure](https://www.notion.so/Stack-Data-Structure-d47cf1c0ae594374b94f696e4865446a)**
+
+A priority queue is a **special type of queue** in which each element is associated with a **priority value**. And, elements are served on the basis of their priority. That is, higher priority elements are served first.
+
+However, if elements with the same priority occur, they are served according to their order in the queue.
+
+#Priority Queue Data Structure
+
+class MyPriorityQueue():
+  
+  def __init__(self,k):
+    self.size = 0
+    self.max_size = k
+    self.front = 0
+    self.rear = 0
+    #Front and rear should be pointing to some array
+    self.array = [0]*k  # k is the number of items
+
+  def isEmpty(self):
+    return self.size == 0
+    return True
+  
+  def isFull(self):
+    return self.size == self.max_size
+    return True 
+
+  def enQueue(self,item):
+    if self.isFull():
+      return False 
+    else:
+      self.rear = (self.rear+1) % self.max_size
+      self.array[self.rear] = item
+      self.rear += 1
+      return True
+
+  def dequeue(self):
+    if self.isEmpty():
+      return False
+    else:
+      self.rear = (self.front+1) % self.max_size
+      self.front -= 1
+      return True
+
+    def Front(self):
+      if not self.isEmpty():
+        return self.array[self.front]
+      else:
+        print("Array Empty")
+
+    def Rear(self):
+      if not self.isEmpty():
+        return self.array[self.rear]
+      else:
+        print("Array Empty")
