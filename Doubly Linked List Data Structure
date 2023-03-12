@@ -1,0 +1,75 @@
+We add a pointer to the previous node in a doubly-linked list. Thus, we can go in either direction: forward or backward.
+
+#Doubly Linked List Data Structure
+
+class Node():
+  def __init__(self,data):
+    self.item = data
+    self.next = None
+    self.prev = None
+
+class DoubleLinkedList():
+  def __init__(self):
+    self.head = None
+
+  def insert_at_start(self,data):
+    if self.head is None:
+      new_node = Node(data)
+      self.head = new_node
+    else:
+      print("List is empty")
+
+  def insert_at_end(self,data):
+    if self.head is None:
+      new_node = Node(data)
+      self.head = new_node
+    n = self.head
+    while n.next is not None:
+      n = n.next
+    new_node = Node(data)
+    n.next = new_node
+    new_node.prev = n
+
+  def delete_at_start(self):
+    if self.head is None:
+      print("List is empty")
+    elif self.head.next is None:
+      self.head = None
+    else:
+      self.head = self.head.next
+      self.head.prev = None
+
+  def delete_at_end(self):
+    if self.head is None:
+      print("List is empty")
+    elif self.head.next is None:
+      self.head = None
+    else:
+      n = self.head
+      while n.next is not None:
+        n = n.next
+      n.prev.next = None
+
+  def display(self):
+    if self.head is None:
+      print("List is empty")
+    else:
+      n = self.head
+      while n is not None:
+        print("Element : ",n.item)
+        n = n.next
+    print("\n")
+
+
+dll = DoubleLinkedList()
+dll.insert_at_start(10)
+dll.insert_at_end(20)
+dll.insert_at_end(30)
+dll.insert_at_end(40)
+dll.display()
+
+dll.delete_at_start()
+dll.display()
+
+dll.delete_at_end()
+dll.display()
