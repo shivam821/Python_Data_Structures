@@ -1,0 +1,55 @@
+# Circular Linked List Data Structure
+
+A circular linked list is a variation of a linked list in which the last element is linked to the first element. This forms a circular loop.
+
+A circular linked list can be either singly linked or doubly linked.
+
+- for singly linked list, next pointer of last item points to the first item
+- In the doubly linked list,  prev pointer of the first item points to the last item as well.
+
+#Circular Linked List Data Structure 
+
+class Node():
+  def __init__(self,data):
+    self.data = data
+    self.next = None
+
+class CircularLinkedList():
+  def __init__(self):
+    self.head = Node(None)
+    self.tail = Node(None)
+    
+    self.head.next = self.tail
+    self.tail.next = self.head
+
+  def append(self,data):
+    new_node = Node(data)
+    if self.head.data is None:
+      self.head = new_node
+      self.tail = new_node
+      new_node.next = self.head
+    else:
+      self.tail.next = new_node
+      self.tail = new_node
+      self.tail.next = self.head
+
+  def display(self):
+    n = self.head
+    if self.head is None:
+      print("List empty")
+    else:
+      print(n.data)
+      while (n.next != self.head):
+        n = n.next
+        print(n.data)
+
+
+class cll:    
+  cl = CircularLinkedList();    
+  #Adds data to the list    
+  cl.append(1);    
+  cl.append(2);    
+  cl.append(3);    
+  cl.append(4);    
+  #Displays all the nodes present in the list    
+  cl.display();
