@@ -1,0 +1,112 @@
+# **Binary Search Tree(BST)**
+
+Binary search tree is a data structure that quickly allows us to maintain a sorted list of numbers.
+
+- It is called a binary tree because each tree node has a maximum of two children.
+- It is called a search tree because it can be used to search for the presence of a number in `O(log(n))` time.
+
+The properties that separate a binary search tree from a regular [binary tree](https://www.programiz.com/data-structures/trees) is
+
+1. All nodes of left subtree are less than the root node
+2. All nodes of right subtree are more than the root node
+3. Both subtrees of each node are also BSTs i.e. they have the above two properties
+
+#Binary Search Tree(BST)
+
+class Node():
+  def __init__(self,data):
+    self.left = None
+    self.right = None
+    self.data = data
+
+  def insert(self,data):
+    if self.data == data:
+      return False 
+    elif self.data > data:
+      if self.left:
+        return self.left.insert(data)
+      else:
+        self.left = Node(data)
+        return True
+    else:
+      if self.right:
+        return self.right.insert(data)
+      else:
+        self.right = Node(data)
+        return True
+
+  def find(self,data):
+    if self.data == data:
+      return True
+    elif self.vaue > data:
+      if self.left:
+        return self.left.insert(data)
+      else:
+        return False
+    else:
+      if self.right:
+        return self.right.insert(data)
+      else:
+        return False
+
+  def preorder(self):
+    if self:
+      print(str(self.data))
+      if self.left:
+        return self.left.preorder()
+      if self.right:
+        return self.right.preorder()
+
+  def inorder(self):
+    if self:
+      if self.left:
+        return self.left.inorder()
+      print(str(self.data))
+      if self.right:
+        return self.right.inorder()
+
+  def postorder(self):
+    if self:
+      if self.left:
+        return self.left.postorder()
+      if self.right:
+        return self.right.postorder()
+      print(str(self.data))
+
+
+class Tree():
+  def __init__(self):
+    self.root = None
+
+  def insert(self,data):
+    if self.root:
+      return self.root.insert(data)
+    else:
+      self.root = Node(data)
+      return True
+
+  def find(self,data):
+    if self.root:
+      return self.root.find(data)
+    else:
+      return False 
+
+
+  def preorder(self):
+    print("Preo-rder : ")
+    self.root.preorder()
+
+  def inorder(self):
+    print("In-order : ")
+    self.root.inorder()
+
+  def postorder(self):
+    print("Post-order : ")
+    self.root.postorder()
+
+bst = Tree()
+bst.insert(10)
+print(bst.insert(15))
+bst.inorder()
+bst.preorder()
+bst.postorder()
