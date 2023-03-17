@@ -1,0 +1,76 @@
+# Binary Tree Data Structure
+
+A binary tree is a tree data structure in which each parent node can have at most two children. Each node of a binary tree consists of three items:
+
+- data item
+- address of left child
+- address of right child
+
+![https://cdn.programiz.com/sites/tutorial2program/files/binary_tree_1.png](https://cdn.programiz.com/sites/tutorial2program/files/binary_tree_1.png)
+
+### **Types of Binary Tree**
+
+****1. Full Binary Tree****
+
+A full Binary tree is a special type of binary tree in which every parent node/internal node has either two or no children.
+
+****2. Perfect Binary Tree****
+
+A perfect binary tree is a type of binary tree in which every internal node has exactly two child nodes and all the leaf nodes are at the same level.
+
+****3. Complete Binary Tree****
+
+A complete binary tree is just like a full binary tree, but with two major differences
+
+1. Every level must be completely filled
+2. All the leaf elements must lean towards the left.
+3. The last leaf element might not have a right sibling i.e. a complete binary tree doesn't have to be a full binary tree.
+
+****4. Skewed Binary Tree****
+
+A skewed binary tree is a pathological/degenerate tree in which the tree is either dominated by the left nodes or the right nodes. Thus, there are two types of skewed binary tree: **left-skewed binary tree** and **right-skewed binary tree**.
+
+****5. Balanced Binary Tree****
+
+It is a type of binary tree in which the difference between the height of the left and the right subtree for each node is either 0 or 1.
+
+#Binary Tree Data Structure 
+
+class Node():
+  def __init__(self,data):
+    self.left = None
+    self.right = None
+    self.data = data
+
+  def traverseInorder(self):
+    if self.left:
+      self.left.traverseInorder()
+    print(self.data,end = " ")
+    if self.right:
+      self.right.traverseInorder()
+
+  def traversePreorder(self):
+    print(self.data,end = " ")
+    if self.left:
+      self.left.traversePreorder()
+    if self.right:
+      self.right.traversePreorder()
+    
+  def traversePostorder(self):
+    if self.left:
+      self.left.traversePostorder()
+    if self.right:
+      self.right.traversePostorder()
+    print(self.data,end = " ")
+
+root = Node(1)
+root.left = Node(2)
+root.right = Node(3)
+root.left.left = Node(4)
+
+print("InOrder : ",end = "")
+root.traverseInorder()
+print("PreOrder : ",end = "")
+root.traversePreorder()
+print("PostOrder : ",end = "")
+root.traversePostorder()
