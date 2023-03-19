@@ -1,0 +1,40 @@
+# **Breadth first search(BFS)**
+
+Traversal means visiting all the nodes of a graph. Breadth First Traversal or Breadth First Search is a recursive algorithm for searching all the vertices of a graph or tree data structure.
+
+## BFS algorithm
+
+A standard BFS implementation puts each vertex of the graph into one of two categories:
+
+1. Visited
+2. Not Visited
+
+The purpose of the algorithm is to mark each vertex as visited while avoiding cycles.
+
+The algorithm works as follows:
+
+1. Start by putting any one of the graph's vertices at the back of a queue.
+2. Take the front item of the queue and add it to the visited list.
+3. Create a list of that vertex's adjacent nodes. Add the ones which aren't in the visited list to the back of the queue.
+4. Keep repeating steps 2 and 3 until the queue is empty.
+
+The graph might have two different disconnected parts so to make sure that we cover every vertex, we can also run the BFS algorithm on every node
+
+#Implementing BFS
+import collections
+def bfs(graph,root):
+    visited = set()
+    queue = collections.deque([root])
+
+    while queue:
+        vertex = queue.popleft() # Dequeue
+        visited.add(vertex)      # Add to visited
+        for i in graph[vertex]:  # Traverse the list at graph[vertex]
+            if i not in visited: # Check if visited
+                queue.append(i)  # Enqueue
+    print(visited)  # Final Result
+
+if __name__ == "__main__":
+    # Dictionary representation of Graph
+    graph = {0:[1,2,3],1:[0,2],2:[0,1,4],3:[0],4:[2]}
+    bfs(graph,0)
