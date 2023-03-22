@@ -1,0 +1,59 @@
+# **Selection Sort Algorithm**
+
+Selection sort is [a sorting algorithm](https://www.programiz.com/dsa/sorting-algorithm) that selects the smallest element from an unsorted list in each iteration and places that element at the beginning of the unsorted list.
+
+# Working of Selection Sort
+
+1. Set the first element as `minimum`.
+    
+    ![https://www.programiz.com/sites/tutorial2program/files/Selection-sort-0-initial-array.png](https://www.programiz.com/sites/tutorial2program/files/Selection-sort-0-initial-array.png)
+    
+    **Select first element as minimum**
+    
+2. Compare `minimum` with the second element. If the second element is smaller than `minimum`, assign the second element as `minimum`.Compare `minimum` with the third element. Again, if the third element is smaller, then assign `minimum` to the third element otherwise do nothing. The process goes on until the last element.
+    
+    ![https://www.programiz.com/sites/tutorial2program/files/Selection-sort-0-comparision.png](https://www.programiz.com/sites/tutorial2program/files/Selection-sort-0-comparision.png)
+    
+    **Compare minimum with the remaining elements**
+    
+3. After each iteration, `minimum` is placed in the front of the unsorted list.
+    
+    ![https://www.programiz.com/sites/tutorial2program/files/Selection-sort-0-swapping.png](https://www.programiz.com/sites/tutorial2program/files/Selection-sort-0-swapping.png)
+    
+    **Swap the first with minimum**
+    
+4. For each iteration, indexing starts from the first unsorted element. Step 1 to 3 are repeated until all the elements are placed at their correct positions.
+    
+    ![https://www.programiz.com/sites/tutorial2program/files/Selection-sort-0.png](https://www.programiz.com/sites/tutorial2program/files/Selection-sort-0.png)
+    
+    **The first iteration**
+    
+    ![https://www.programiz.com/sites/tutorial2program/files/Selection-sort-1.png](https://www.programiz.com/sites/tutorial2program/files/Selection-sort-1.png)
+    
+    **The second iteration**
+    
+    ![https://www.programiz.com/sites/tutorial2program/files/Selection-sort-2.png](https://www.programiz.com/sites/tutorial2program/files/Selection-sort-2.png)
+    
+    **The third iteration**
+    
+    ![https://www.programiz.com/sites/tutorial2program/files/Selection-sort-3_1.png](https://www.programiz.com/sites/tutorial2program/files/Selection-sort-3_1.png)
+    
+    **The fourth iteration**
+    
+    #Selection Sort Algorithm
+def selection_sort(llist):
+  length = range(0,len(llist) - 1)
+
+  for i in length:
+    min_value = i
+
+    for j in range(i+1,len(llist)):
+      if llist[j] < llist[min_value]:
+        min_value = j
+
+    if min_value != i:
+      llist[min_value],llist[i] = llist[i],llist[min_value]
+
+  return llist
+
+print(selection_sort([3,2,5,4,7,6,9,8]))
